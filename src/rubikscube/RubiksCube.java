@@ -45,6 +45,19 @@ public class RubiksCube {
         state = RubiksCube.createSolvedState();
     }
 
+    public RubiksCube(RubiksCube other) {
+        // 1. Create a new, empty 6x3x3 array
+        this.state = new char[6][3][3];
+
+        for (int face = 0; face < 6; face++) {
+            for (int row = 0; row < 3; row++) {
+                System.arraycopy(other.state[face][row], 0, this.state[face][row], 0, 3);
+            }
+        }
+    }
+
+
+
     /**
      * Checks that the color is good
      * and sets state[face][i][j] = color
@@ -151,6 +164,43 @@ public class RubiksCube {
         rotate4(new int[]{LEFT, 2, 0}, new int[]{FRONT, 2, 0}, new int[]{RIGHT, 2, 0}, new int[]{BACK, 2, 0});
         rotate4(new int[]{LEFT, 2, 1}, new int[]{FRONT, 2, 1}, new int[]{RIGHT, 2, 1}, new int[]{BACK, 2, 1});
         rotate4(new int[]{LEFT, 2, 2}, new int[]{FRONT, 2, 2}, new int[]{RIGHT, 2, 2}, new int[]{BACK, 2, 2});
+    }
+
+    // Our scouting methods to essentially create the graph as we do a move
+    public RubiksCube getNeighborF() {
+        RubiksCube neighbor = new RubiksCube(this);
+        neighbor.moveF();                        
+        return neighbor;                        
+    }
+
+    public RubiksCube getNeighborB() {
+        RubiksCube neighbor = new RubiksCube(this);
+        neighbor.moveB();
+        return neighbor;
+    }
+
+    public RubiksCube getNeighborL() {
+        RubiksCube neighbor = new RubiksCube(this);
+        neighbor.moveL();
+        return neighbor;
+    }
+
+    public RubiksCube getNeighborR() {
+        RubiksCube neighbor = new RubiksCube(this);
+        neighbor.moveR();
+        return neighbor;
+    }
+
+    public RubiksCube getNeighborU() {
+        RubiksCube neighbor = new RubiksCube(this);
+        neighbor.moveU();
+        return neighbor;
+    }
+
+    public RubiksCube getNeighborD() {
+        RubiksCube neighbor = new RubiksCube(this);
+        neighbor.moveD(); 
+        return neighbor;
     }
 
     public void makeMove(char c) {
