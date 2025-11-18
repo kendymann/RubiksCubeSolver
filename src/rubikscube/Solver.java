@@ -1,5 +1,5 @@
 package rubikscube;
-
+// This is a test
 import java.lang.invoke.MethodHandles;
 
 public class Solver {
