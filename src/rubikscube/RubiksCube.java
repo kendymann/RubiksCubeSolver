@@ -13,7 +13,7 @@ public class RubiksCube {
     private static int DONW = 5;
 
     // current state of the cube
-    private char state[][][];
+    char state[][][]; // Had to make this unprivate so that we can use it in solver
 
 
     /**
@@ -166,39 +166,46 @@ public class RubiksCube {
     }   
 
     // Our scouting methods to essentially create the graph as we do a move
-    public RubiksCube getNeighborF() {
-        RubiksCube neighbor = new RubiksCube(this);
-        neighbor.moveF();                        
-        return neighbor;                        
-    }
+    // public RubiksCube getNeighborF() {
+    //     RubiksCube neighbor = new RubiksCube(this);
+    //     neighbor.moveF();                        
+    //     return neighbor;                        
+    // }
 
-    public RubiksCube getNeighborB() {
-        RubiksCube neighbor = new RubiksCube(this);
-        neighbor.moveB();
-        return neighbor;
-    }
+    // public RubiksCube getNeighborB() {
+    //     RubiksCube neighbor = new RubiksCube(this);
+    //     neighbor.moveB();
+    //     return neighbor;
+    // }
 
-    public RubiksCube getNeighborL() {
-        RubiksCube neighbor = new RubiksCube(this);
-        neighbor.moveL();
-        return neighbor;
-    }
+    // public RubiksCube getNeighborL() {
+    //     RubiksCube neighbor = new RubiksCube(this);
+    //     neighbor.moveL();
+    //     return neighbor;
+    // }
 
-    public RubiksCube getNeighborR() {
-        RubiksCube neighbor = new RubiksCube(this);
-        neighbor.moveR();
-        return neighbor;
-    }
+    // public RubiksCube getNeighborR() {
+    //     RubiksCube neighbor = new RubiksCube(this);
+    //     neighbor.moveR();
+    //     return neighbor;
+    // }
 
-    public RubiksCube getNeighborU() {
-        RubiksCube neighbor = new RubiksCube(this);
-        neighbor.moveU();
-        return neighbor;
-    }
+    // public RubiksCube getNeighborU() {
+    //     RubiksCube neighbor = new RubiksCube(this);
+    //     neighbor.moveU();
+    //     return neighbor;
+    // }
 
-    public RubiksCube getNeighborD() {
+    // public RubiksCube getNeighborD() {
+    //     RubiksCube neighbor = new RubiksCube(this);
+    //     neighbor.moveD(); 
+    //     return neighbor;
+    // }
+
+    // Above functions are redundant we only need 1 get neighbor function we already have a logic box makeMove
+    public RubiksCube getNeighbor( char c ) {
         RubiksCube neighbor = new RubiksCube(this);
-        neighbor.moveD(); 
+        neighbor.makeMove(c);
         return neighbor;
     }
 
